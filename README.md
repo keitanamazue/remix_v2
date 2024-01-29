@@ -1,38 +1,70 @@
-# Welcome to Remix!
+# おくりびと相続
 
-- [Remix Docs](https://remix.run/docs)
+## Requirements
 
-## Development
+- Node.jsのversionを20.11.0にする
 
-From your terminal:
-
-```sh
-npm run dev
+```bash
+nvm install 20.11.0
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+- yarnのversionを4.0.2にする
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
+```bash
+yarn set version stable
 ```
 
-Then run the app in production mode:
+## Setup
 
-```sh
-npm start
+```bash
+yarn
 ```
 
-Now you'll need to pick a host to deploy it to.
+## Develop
 
-### DIY
+First, run the development server:
 
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
+```bash
+yarn dev
 
-Make sure to deploy the output of `remix build`
+open http://localhost:3000
+```
 
-- `build/`
-- `public/build/`
+## Git
+
+### Commit Message Prefix
+
+| Prefix   | 説明                 |
+| -------- | -------------------- |
+| feat     | 機能追加             |
+| refactor | リファクタリング     |
+| fix      | バグ修正             |
+| chore    | ライブラリ追加等     |
+| docs     | ドキュメントのみ変更 |
+| style    | スタイルのみ変更     |
+| test     | テストの追加         |
+
+### Branch Model
+
+以下を参考にブランチを切ってください。
+
+| ブランチ名 | 説明                                               |
+| ---------- | -------------------------------------------------- |
+| main       | 起点となるブランチ。マージしたら本番環境へ反映する |
+| staging    | マージしたら本番環境へ反映する                     |
+| feat/XXX   | 機能開発用ブランチ                                 |
+| ref/XXX    | リファクタリング用ブランチ                         |
+| fix/XXX    | バグ修正用ブランチ                                 |
+| hotfix/XXX | 本番環境で発生している緊急バグ修正用ブランチ       |
+
+## Directory
+
+コンポーネントの分割粒度は Atomic Design に倣う
+
+```
+├── public ...静的ファイル群
+└── app
+    ├── _components ...共通コンポーネント
+    ├── routes ...ルーティングに関する設定ファイルやディレクトリ
+    └── utils ...共通項目
+```
